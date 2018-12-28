@@ -8,7 +8,7 @@ steps:
   - set
   - image
   - deployment
-  - test-deployment
+  - test
   - test=gcr.io/fresh-gravity-226207/test:$SHORT_SHA
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west3-a'
