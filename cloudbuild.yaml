@@ -1,4 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/fresh-gravity-226207/test', '.']
-images: ['gcr.io/fresh-gravity-226207/test']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/fresh-gravity-226207/test']
