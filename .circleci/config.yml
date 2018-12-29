@@ -3,11 +3,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.2
+      - image: circleci/python:3.6.8
     steps:
       - checkout
 
-      # Install & cache python dependencies
       - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
@@ -21,14 +20,16 @@ jobs:
           paths:
             - "venv"
 
-      # Install and cache Google Cloud SDK
       - restore_cache:
           key: cloud-sdk-{{ checksum ".circleci/install-and-activate-google-cloud-sdk.sh" }}
-      - run: /bin/bash .circleci/install-and-activate-google-cloud-sdk.sh
+      - run:
+          name: Prepare Google Cloud SDK
+          command: /bin/bash .circleci/install-and-activate-google-cloud-sdk.sh
       - save_cache:
           paths:
             - ~/google-cloud-sdk
           key: cloud-sdk-{{ checksum ".circleci/install-and-activate-google-cloud-sdk.sh" }}
 
-      # Deploy to Google App Engine
-      - run: ${HOME}/google-cloud-sdk/bin/gcloud app deploy
+      - run:
+          name: Deploy to App Engine
+          command: ${HOME}/google-cloud-sdk/bin/gcloud app deploy
