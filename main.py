@@ -42,7 +42,7 @@ def callback():
     # Store the user information in flask session.
     session['jwt_payload'] = userinfo
     session['profile'] = {
-        'user_id': userinfo['sub'],
+        'id': userinfo['sub'],
         'name': userinfo['name'],
         'picture': userinfo['picture']
     }

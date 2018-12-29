@@ -1,6 +1,30 @@
-<div class="login-box auth0-box before">
-    <img src="https://i.cloudup.com/StzWWrY34s.png" />
-    <h3>My test app</h3>
-    <p>Zero friction identity infrastructure, built for developers</p>
-    <a class="btn btn-primary btn-lg btn-login btn-block" href="/login">Log In</a>
-</div>
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block nav_home %}
+    <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+    </li>
+{% endblock %}
+
+{% block nav_dashboard %}
+    {% if session['profile'] %}
+        {{ super() }}
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link disabled" href="/dashboard">Dashboard</a>
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple app, intended to teach me Bootstrap and Flask</p>
+        <hr class="my-4">
+        {% if not session['profile'] %}
+            <p>You need to <a href="/login">log in</a> to access all the features.</p>
+        {% endif %}
+    </div>
+{% endblock %}
