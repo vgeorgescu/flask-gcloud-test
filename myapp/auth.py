@@ -1,10 +1,10 @@
 from functools import wraps
+from urllib.parse import urlencode
 
 from authlib.flask.client import OAuth
 from flask import url_for, Blueprint
 from flask import redirect
 from flask import session
-from six.moves.urllib.parse import urlencode
 
 oauth = OAuth()
 

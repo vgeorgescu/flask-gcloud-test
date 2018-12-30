@@ -1,8 +1,4 @@
 Flask==1.0.2
-python-dotenv
-requests
 authlib
-six
 pytest
-coverage
 gunicorn
