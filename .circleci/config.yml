@@ -32,7 +32,9 @@ jobs:
 
       - run:
           name: Run tests
-          command: pytest
+          command: |
+            . venv/bin/activate
+            pytest
 
       - run:
           name: Deploy to App Engine
