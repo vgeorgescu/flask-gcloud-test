@@ -31,5 +31,9 @@ jobs:
           key: cloud-sdk-{{ checksum ".circleci/install-and-activate-google-cloud-sdk.sh" }}
 
       - run:
+          name: Run tests
+          command: pytest
+
+      - run:
           name: Deploy to App Engine
           command: ${HOME}/google-cloud-sdk/bin/gcloud app deploy
