@@ -4,7 +4,7 @@ from myapp import app
 def test_home(client):
     """Check the home page"""
     response = client.get('/')
-    assert b'La multi ani!' in response.data
+    assert b'Hello, world!' in response.data
 
 
 def test_dashboard_redirect(client):
